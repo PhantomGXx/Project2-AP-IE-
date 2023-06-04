@@ -1,0 +1,309 @@
+
+<!-- #HTML -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shop and Sell Now! - International Digital Shop's Main Pagex`</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #0064d2;
+      }
+      #sell-btn
+      {
+        float: right;
+        font-size: x-large;
+        color: #f2f2f2;
+        background-color: rgb(134, 10, 132);
+        transition: transform 0.3s ease-in-out;
+      }
+      #sell-btn:hover{
+        color: rgb(134, 10, 132);
+        background-color: #f2f2f2;
+        transform: scale(1.2);
+      }
+      #search-btn{
+        font-size: larger;
+        background-color: #0064d2;
+        color: #ffffff;
+      }
+      #search-btn:hover{
+        color: #0064d2;
+        background-color: #ffffff;
+        transform: scale(1.07);
+      }
+      #search-bar{
+        font-size: large;
+        width: 320px;
+      }
+      #search{
+        align-items: center;
+        align-self: center;
+        text-align: center;
+      }
+      #ShoppingCart{
+        margin-right: 80px;
+      }
+      nav {
+        display: flex;
+        object-position: top;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 10px;
+        background-color: #ffffff;
+      }
+      .category {
+        align-items: center;
+        margin: 10px;
+      }
+      #Titles{
+        border: 2px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        margin-left: 70px;
+        transition: border-color 0.3s ease-in-out;
+      }
+      #Titles:hover{
+        border-color:rgb(134, 10, 132);
+      }
+      form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      .items-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .item {
+        background-color: #ffffff;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        flex: 1 0 30%; /* Set flex-basis to ensure equal width across all items */
+      }
+
+      .item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 15px;
+      }
+
+      .item-name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .item-description {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .item-price {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .category-container 
+      {
+       display: inline-block;
+       top: 0;
+      position: inherit;
+       flex-wrap: wrap;
+       width: 100%;
+       margin-bottom: 20px;
+      }
+   
+   .clothing-category {
+     width: 60%;
+    }
+   
+   .electronics-category {
+     width: 60%;
+    }
+    .kitchenware-category{
+      width: 60%;
+    }
+    .miscellaneous-category{
+      width: 60%;
+    }
+      .add-to-cart {
+        background-color: #0064d2;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      .add-to-cart:hover {
+        background-color: #0052ab;
+      }
+      input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <a href="MainPage.html">
+       <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
+      </a>
+       <form id="search">
+        <input id="search-bar" type="search" placeholder="Search for items...">
+        <button id="search-btn" type="submit">Search</button>
+      </form>
+      <a href="ShoppingCartPage.html">
+      <img src="https://i.postimg.cc/MpXNG2F9/Shopping-Cart-Logo.png" id="ShoppingCart" width="50" height="50">
+      </a>
+      <a href="AddItemPage.html">
+        <button id="sell-btn">Sell Now!</button>
+      </a>
+    </header>
+
+    <!--
+    <nav>
+      <div class="category-container clothing-category">
+         <a href="#">
+           <img src="https://i.postimg.cc/fTxgYKPf/Clothing-Category.png" width="150" height="50" alt="Clothing" id="Titles">
+         </a>
+         <section class="items-section">
+           <div class="item">
+             <img src="item-image.jpg" alt="Item image">
+              <h2 class="item-name">Item Name</h2>
+             <p class="item-description">Item description goes here.</p>
+             <p class="item-price">420000 IRR</p>
+             <p class="item-price">1 USD</p>
+             <button class="add-to-cart">Add to cart</button>
+           </div>
+         </section> 
+         <section class="items-section">
+          <div class="item">
+            <img src="item-image.jpg" alt="Item image">
+             <h2 class="item-name">Item Name</h2>
+            <p class="item-description">Item description goes here.</p>
+            <p class="item-price">420000 IRR</p>
+            <p class="item-price">1 USD</p>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </section> 
+         </div>
+      </div>
+    -->
+
+    <div class="category-container clothing-category">
+      <a href="#">
+        <img src="https://i.postimg.cc/fTxgYKPf/Clothing-Category.png" width="150" height="50" alt="Clothing" id="Titles">
+      </a>
+      {% for item in items_list %}
+      <section class="items-section">
+        <div class="item">
+          <img src="{{ item.image }}" alt="Item image">
+          <h2 class="item-name">{{ item.name }}</h2>
+          <p class="item-description">{{ item.description }}</p>
+          <p class="item-price">{{ item.price_IRR }} IRR</p>
+          <p class="item-price">{{ item.price_USD }} USD</p>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+      </section> 
+      {% endfor %}
+    </div>
+
+
+      <div class="category-container electronics-category" id="electronics-section">
+        <a href="#">
+          <img src="https://i.postimg.cc/ZnXGDMLf/Electronics-Category.png" width="180" height="50" alt="Electronics" id="Titles">
+        </a>
+        <section class="items-section">
+          <div class="item">
+            <img src="item-image.jpg" alt="Item image">
+            <h2 class="item-name">Item Name</h2>
+            <p class="item-description">Item description goes here.</p>
+            <p class="item-price">420000 IRR</p>
+            <p class="item-price">1 USD</p>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </section> 
+      </div>
+
+      <div class="category-container kitchenware-category">
+        <a href="#">
+          <img src="https://i.postimg.cc/9M7W3Yy0/Kitchen-Ware-Category.png" width="220" height="50" alt="Kitchenware" id="Titles">
+        </a>
+        <section class="items-section">
+          <div class="item">
+            <img src="item-image.jpg" alt="Item image">
+            <h2 class="item-name">Item Name</h2>
+            <p class="item-description">Item description goes here.</p>
+            <p class="item-price">420000 IRR</p>
+            <p class="item-price">1 USD</p>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </section> 
+      </div>
+
+      <div class="category-container miscellaneous-category">
+        <a href="#">
+          <img src="https://i.postimg.cc/ydFwXQFm/Miscellaneous-Category.png" width="240" height="45" alt="Miscellaneous" id="Titles">
+        </a>
+        <section class="items-section">
+          <div class="item">
+            <img src="item-image.jpg" alt="Item image">
+            <h2 class="item-name">Item Name</h2>
+            <p class="item-description">Item description goes here.</p>
+            <p class="item-price">420000 IRR</p>
+            <p class="item-price">1 USD</p>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </section> 
+      </div>
+    </nav> 
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2023 ShopAndSellNow. All rights reserved to Phantom.</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-links">
+              <li><a href="MainPage.html">Home</a></li>
+              <li><a href="ErrorPage.html">About Us</a></li>
+              <li><a href="ErrorPage.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

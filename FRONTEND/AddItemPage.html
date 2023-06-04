@@ -1,0 +1,115 @@
+
+<!-- #HTML -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sell Now! - International Digital Shop's Selling Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        background-color: #0064d2;
+      }
+      h1 {
+        text-align: center;
+      }
+      #logo {
+        width: 150px;
+      }
+      form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #bec2f3;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+      }
+      #Reminder{
+        font-size: x-small;
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+      input[type="submit"] {
+        background-color: #ac2ca7;
+        color: #cecccc;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      input[type="submit"]:hover {
+        background-color: #90248c;
+      }
+      /* This is for when the screen size changes, like mobile. */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        #logo {
+          margin-bottom: 10px;
+        }
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .category {
+          margin: 10px 0;
+        }
+        form {  
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="MainPage.html">
+       <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
+      </a>
+    </header>
+
+    <h1 {text-align: center;}>
+    <h1>Sell Your Stuff</h1>
+    <form action="/sell" method="post">
+      <label for="item-name">Item Name: <p id="Reminder">(No more then 50 characters)</p></label>
+      <input type="text" id="item-name" name="item-name" required maxlength="50">
+      <label for="item-description">Item Description:<p id="Reminder">(No more then 600 characters)</p></label>
+      <textarea id="item-description" name="item-description" required maxlength="600"></textarea>
+      <label for="item-price">Item Price (IRR):<p id="Reminder">(No more then 12 digits)</p></label>
+      <input type="text" id="item-price" name="item-price" required maxlength="12">
+      <label for="item-image">Item Image:<p id="Reminder">(Please enter the URL) <p id="Reminder"><a href="https://postimg.cc/">[You can use this site to upload images]</a></p>  </label>
+      <input type="text" id="item-image" name="item-image">
+      <label for="item-category">Item Category:</label>
+      <select id="item-category" name="item-category" required>
+        <option value="">Select a category</option>
+        <option value="clothing">Clothing</option>
+        <option value="electronics">Electronics</option>
+        <option value="kitchenware">Kitchenware</option>
+        <option value="miscellaneous">Miscellaneous</option>
+      </select>
+      <hr>
+      <input type="submit" value="Sell Item">
+    </form>
+  </body>
+</html> 
