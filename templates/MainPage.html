@@ -53,10 +53,10 @@
         margin-right: 80px;
       }
       nav {
-        display: flex;
+        display: flex-start;
         object-position: top;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: flex;
         padding: 10px;
         background-color: #ffffff;
       }
@@ -64,13 +64,23 @@
         align-items: center;
         margin: 10px;
       }
+      #Categories{
+        text-align: center;
+        border: 2px solid #ccc;
+        margin: 10px;
+        margin-left: 70px;
+        transition: border-color 0.3s ease-in-out;
+      }
+      #Categories:hover{
+        border-color:rgb(134, 10, 132);
+      }
       #Titles{
         border: 2px solid #ccc;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 10px;
-        margin-left: 70px;
+        margin-left: 100px;
         transition: border-color 0.3s ease-in-out;
       }
       #Titles:hover{
@@ -128,7 +138,7 @@
       {
        display: inline-block;
        top: 0;
-      position: inherit;
+      position: center;
        flex-wrap: wrap;
        width: 100%;
        margin-bottom: 20px;
@@ -170,12 +180,44 @@
         margin-bottom: 20px;
         font-size: 16px;
       }
+      #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        background-color: #0064d2;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none; /* Hide the button initially */
+        z-index: 1000; /* Ensure the button stays on top of other elements */
+      }
     </style>
   </head>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 300) {
+          backToTopButton.style.display = "block";
+        } else {
+          backToTopButton.style.display = "none";
+        }
+      });
+
+      backToTopButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+
   <body>
 
     <header>
-      <a href="MainPage.html">
+      <a href="#">
        <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
       </a>
        <form id="search">
@@ -185,46 +227,23 @@
       <a href="ShoppingCartPage.html">
       <img src="https://i.postimg.cc/MpXNG2F9/Shopping-Cart-Logo.png" id="ShoppingCart" width="50" height="50">
       </a>
-      <a href="AddItemPage.html">
+      <a href="/sell">
         <button id="sell-btn">Sell Now!</button>
       </a>
     </header>
 
-    <!--
-    <nav>
-      <div class="category-container clothing-category">
-         <a href="#">
-           <img src="https://i.postimg.cc/fTxgYKPf/Clothing-Category.png" width="150" height="50" alt="Clothing" id="Titles">
-         </a>
-         <section class="items-section">
-           <div class="item">
-             <img src="item-image.jpg" alt="Item image">
-              <h2 class="item-name">Item Name</h2>
-             <p class="item-description">Item description goes here.</p>
-             <p class="item-price">420000 IRR</p>
-             <p class="item-price">1 USD</p>
-             <button class="add-to-cart">Add to cart</button>
-           </div>
-         </section> 
-         <section class="items-section">
-          <div class="item">
-            <img src="item-image.jpg" alt="Item image">
-             <h2 class="item-name">Item Name</h2>
-            <p class="item-description">Item description goes here.</p>
-            <p class="item-price">420000 IRR</p>
-            <p class="item-price">1 USD</p>
-            <button class="add-to-cart">Add to cart</button>
-          </div>
-        </section> 
-         </div>
-      </div>
-    -->
+    <nav id="search">
+      <a href="#clothing" id="Categories">Clothing</a>
+      <a href="#electronics" id="Categories">Electronics</a>
+      <a href="#kitchenware" id="Categories">Kitchenware</a>
+      <a href="#miscellaneous" id="Categories">Miscellaneous</a>
+    </nav>
 
-    <div class="category-container clothing-category">
+    <div class="category-container clothing-category" id="clothing">
       <a href="#">
         <img src="https://i.postimg.cc/fTxgYKPf/Clothing-Category.png" width="150" height="50" alt="Clothing" id="Titles">
       </a>
-      {% for item in items_list %}
+      {% for item in clothing_list %}
       <section class="items-section">
         <div class="item">
           <img src="{{ item.image }}" alt="Item image">
@@ -239,54 +258,62 @@
     </div>
 
 
-      <div class="category-container electronics-category" id="electronics-section">
+      <div class="category-container electronics-category" id="electronics">
         <a href="#">
           <img src="https://i.postimg.cc/ZnXGDMLf/Electronics-Category.png" width="180" height="50" alt="Electronics" id="Titles">
         </a>
+        {% for item in electronics_list %}
         <section class="items-section">
           <div class="item">
-            <img src="item-image.jpg" alt="Item image">
-            <h2 class="item-name">Item Name</h2>
-            <p class="item-description">Item description goes here.</p>
-            <p class="item-price">420000 IRR</p>
-            <p class="item-price">1 USD</p>
+            <img src="{{ item.image }}" alt="Item image">
+            <h2 class="item-name">{{ item.name }}</h2>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="item-price">{{ item.price_IRR }} IRR</p>
+            <p class="item-price">{{ item.price_USD }} USD</p>
             <button class="add-to-cart">Add to cart</button>
           </div>
         </section> 
+        {% endfor %}
       </div>
 
-      <div class="category-container kitchenware-category">
+      <div class="category-container kitchenware-category" id="kitchenware">
         <a href="#">
           <img src="https://i.postimg.cc/9M7W3Yy0/Kitchen-Ware-Category.png" width="220" height="50" alt="Kitchenware" id="Titles">
         </a>
+        {% for item in kitchenware_list %}
         <section class="items-section">
           <div class="item">
-            <img src="item-image.jpg" alt="Item image">
-            <h2 class="item-name">Item Name</h2>
-            <p class="item-description">Item description goes here.</p>
-            <p class="item-price">420000 IRR</p>
-            <p class="item-price">1 USD</p>
+            <img src="{{ item.image }}" alt="Item image">
+            <h2 class="item-name">{{ item.name }}</h2>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="item-price">{{ item.price_IRR }} IRR</p>
+            <p class="item-price">{{ item.price_USD }} USD</p>
             <button class="add-to-cart">Add to cart</button>
           </div>
         </section> 
+        {% endfor %}
       </div>
 
-      <div class="category-container miscellaneous-category">
+      <div class="category-container miscellaneous-category" id="miscellaneous">
         <a href="#">
           <img src="https://i.postimg.cc/ydFwXQFm/Miscellaneous-Category.png" width="240" height="45" alt="Miscellaneous" id="Titles">
         </a>
+        {% for item in miscellaneous_list %}
         <section class="items-section">
           <div class="item">
-            <img src="item-image.jpg" alt="Item image">
-            <h2 class="item-name">Item Name</h2>
-            <p class="item-description">Item description goes here.</p>
-            <p class="item-price">420000 IRR</p>
-            <p class="item-price">1 USD</p>
+            <img src="{{ item.image }}" alt="Item image">
+            <h2 class="item-name">{{ item.name }}</h2>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="item-price">{{ item.price_IRR }} IRR</p>
+            <p class="item-price">{{ item.price_USD }} USD</p>
             <button class="add-to-cart">Add to cart</button>
           </div>
         </section> 
+        {% endfor %}
       </div>
     </nav> 
+
+    <button id="back-to-top">Back to Top</button>
 
     <footer>
       <div class="container">

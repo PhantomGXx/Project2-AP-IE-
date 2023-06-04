@@ -34,14 +34,43 @@ def sell():
 
 @app.route('/clothing')
 def clothing():
-    items_list = [
+    clothing_list = [
         {'name': 'Item 1', 'description': 'This is item 1', 'price_IRR': '$19.99','price_USD': '$39.99', 'category':'electronics'},
         {'name': 'Item 2', 'description': 'This is item 2', 'price_IRR': '$29.99', 'price_USD': '$39.99', 'category':'electronics'},
         {'name': 'Item 3', 'description': 'This is item 3', 'price_IRR': '$39.99', 'price_USD': '$39.99','category':'electronics'}
     ]
     
-    return render_template('clothing.html', items_list=items_list)
+    return render_template('clothing.html', items_list=clothing_list)
 
+@app.route('/electronics')
+def electronics():
+    electronics_list = [
+        {'name': 'Item 1', 'description': 'This is item 1', 'price_IRR': '$19.99','price_USD': '$39.99', 'category':'electronics'},
+        {'name': 'Item 2', 'description': 'This is item 2', 'price_IRR': '$29.99', 'price_USD': '$39.99', 'category':'electronics'},
+        {'name': 'Item 3', 'description': 'This is item 3', 'price_IRR': '$39.99', 'price_USD': '$39.99','category':'electronics'}
+    ]
+    
+    return render_template('clothing.html', items_list=electronics_list)
+
+@app.route('/kitchenware')
+def kitchenware():
+    kitchenware_list = [
+        {'name': 'Item 1', 'description': 'This is item 1', 'price_IRR': '$19.99','price_USD': '$39.99', 'category':'electronics'},
+        {'name': 'Item 2', 'description': 'This is item 2', 'price_IRR': '$29.99', 'price_USD': '$39.99', 'category':'electronics'},
+        {'name': 'Item 3', 'description': 'This is item 3', 'price_IRR': '$39.99', 'price_USD': '$39.99','category':'electronics'}
+    ]
+    
+    return render_template('clothing.html', items_list=kitchenware_list)
+
+@app.route('/miscellaneous')
+def miscellaneous():
+    miscellaneous_list = [
+        {'name': 'Item 1', 'description': 'This is item 1', 'price_IRR': '$19.99','price_USD': '$39.99', 'category':'electronics'},
+        {'name': 'Item 2', 'description': 'This is item 2', 'price_IRR': '$29.99', 'price_USD': '$39.99', 'category':'electronics'},
+        {'name': 'Item 3', 'description': 'This is item 3', 'price_IRR': '$39.99', 'price_USD': '$39.99','category':'electronics'}
+    ]
+    
+    return render_template('clothing.html', items_list=miscellaneous_list)
 
 @app.route('/MainPage.html')
 def main_page():
