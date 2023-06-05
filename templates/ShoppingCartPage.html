@@ -1,12 +1,14 @@
 
 <!-- #HTML -->
 
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Shop and Sell Now! - International Digital Shop</title>
     <style>
-      body {
+
+body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
       }
@@ -48,45 +50,24 @@
         align-items: center;
         align-self: center;
         text-align: center;
+        font-size: larger ;
+      }
+      #ShoppingCart{
+        margin-right: 80px;
       }
       nav {
-        display: flex;
+        display: flex-start;
+        object-position: top;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex;
         padding: 10px;
         background-color: #ffffff;
       }
-      .category {
-        align-items: center;
-        margin: 10px;
-      }
-      #Titles{
-        border: 2px solid #ccc;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px;
-        transition: border-color 0.3s ease-in-out;
-      }
-      #Titles:hover{
-        border-color:rgb(134, 10, 132);
-      }
-      form {
-        width: 500px;
-        margin: 0 auto;
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      }
-      label {
-        display: block;
-        margin-bottom: 10px;
-        color: #333333;
-      }
+
       .items-section {
         display: flex;
         flex-wrap: wrap;
+      flex-direction: row-reverse; 
         justify-content: center;
         padding: 20px;
       }
@@ -97,14 +78,19 @@
         margin: 10px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        flex: 1 0 30%; /* Set flex-basis to ensure equal width across all items */
+        flex: 1 0 30%; 
+        position: relative;
       }
 
       .item img {
-        width: 100%;
-        height: auto;
+        width: 200px;
+        height: 200px;
         display: block;
         margin-bottom: 15px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        border: 2px solid #333;
       }
 
       .item-name {
@@ -124,28 +110,7 @@
         color: #333;
         margin-bottom: 20px;
       }
-      .category-container 
-      {
-       display: flex;
-       flex-wrap: wrap;
-       width: 100%;
-       margin-bottom: 20px;
-      }
-   
-   .clothing-category {
-     width: 60%;
-    }
-   
-   .electronics-category {
-     width: 60%;
-    }
-    .kitchenware-category{
-      width: 60%;
-    }
-    .miscellaneous-category{
-      width: 60%;
-    }
-      .add-to-cart {
+      .remove-from-cart {
         background-color: #0064d2;
         color: #ffffff;
         padding: 10px 20px;
@@ -156,70 +121,105 @@
         text-transform: uppercase;
       }
 
-      .add-to-cart:hover {
+      .remove-from-cart:hover {
         background-color: #0052ab;
       }
-      input[type="text"], textarea {
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        box-shadow: 0 0 5px rgba(0,0,0,0.2);
-        margin-bottom: 20px;
-        font-size: 16px;
+      #total-price-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
       }
-      input[type="submit"] {
-        background-color: #f5a623;
+      #pay-now-btn {
+        font-size: larger;
+        background-color: #0064d2;
         color: #ffffff;
         padding: 10px 20px;
         border-radius: 5px;
         border: none;
         cursor: pointer;
-        font-size: 16px;
+        text-transform: uppercase;
       }
-      input[type="submit"]:hover {
-        background-color: #ffbf47;
+      #pay-now-btn:hover {
+        background-color: #0052ab;
       }
-      @media (max-width: 768px) {
-        header {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        #logo {
-          margin-bottom: 10px;
-        }
-        nav {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .category {
-          margin: 10px 0;
-        }
-        form {  
-          width: 100%;
-        }
-      }
+      .flashes {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.flashes p {
+  margin: 0;
+  padding: 5px;
+  color: #333;
+}
     </style>
   </head>
   <body>
 
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flashes">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
     <header>
-      <a href="MainPage.html">
+      <a href="/">
        <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
       </a>
-       <form id="search">
-        <input id="search-bar" type="search" placeholder="Search for items...">
-        <button id="search-btn" type="submit">Search</button>
-      </form>
-      <a href="AddItemPage.html">
+      <a href="/sell">
         <button id="sell-btn">Sell Now!</button>
       </a>
     </header>
+    
+    <div id="total-price-container">
+      <p id="total-price">Total Price: {{ total_price_IRR }} IRR</p>
+      <p id="total-price">Total Price: {{ total_price_USD }} USD</p>
+      <button id="pay-now-btn"><a href="/error">Pay Now!</a></button>
+    </div>
 
     <nav>
+      {% for item in cart_list %}
+      <section class="items-section">
+        <div class="item">
+          <img src="{{ item.image }}" alt="Item image">
+          <h2 class="item-name">{{ item.name }}</h2>
+          <p class="item-description">{{ item.description }}</p>
+          <p class="item-price">{{ item.price_IRR }} IRR</p>
+          <p class="item-price">{{ item.price_USD }} USD</p>
+          <form method="POST" action="{{ url_for('cart') }}">
+            <input type="hidden" name="item_id" value="{{ loop.index0 }}">
+            <button type="submit" name="remove_from_cart" class="remove-from-cart">Remove from Cart</button>
+          </form>
+        </div>
+      </section> 
+      {% endfor %}
     </nav>
-    <!--
-        Add cart for items we bought to be stored there, nice and clean.
-    -->
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2023 ShopAndSellNow. All rights reserved to PhantomX.</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/error">About Us</a></li>
+              <li><a href="/error">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
   </body>
 </html>

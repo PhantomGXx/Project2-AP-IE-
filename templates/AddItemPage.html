@@ -59,7 +59,7 @@
       input[type="submit"]:hover {
         background-color: #90248c;
       }
-      /* This is for when the screen size changes, like mobile. */
+
       @media (max-width: 768px) {
         header {
           flex-direction: column;
@@ -79,10 +79,32 @@
           width: 100%;
         }
       }
+      .flashes {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.flashes p {
+  margin: 0;
+  padding: 5px;
+  color: #333;
+}
     </style>
   </head>
 
   <body>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flashes">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
     <header>
       <a href="/">
        <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
@@ -92,10 +114,10 @@
     <h1 {text-align: center;}>
     <h1>Sell Your Stuff</h1>
     <form action="/sell" method="post">
-      <label for="item-name">Item Name: <p id="Reminder">(No more then 50 characters)</p></label>
+      <label for="item-name">Item Name: <p id="Reminder">(No more then 40 characters)</p></label>
       <input type="text" id="item-name" name="item-name" required maxlength="50">
-      <label for="item-description">Item Description:<p id="Reminder">(No more then 600 characters)</p></label>
-      <textarea id="item-description" name="item-description" required maxlength="600"></textarea>
+      <label for="item-description">Item Description:<p id="Reminder">(No more then 60 characters)</p></label>
+      <textarea id="item-description" name="item-description" required maxlength="60"></textarea>
       <label for="item-price">Item Price (IRR):<p id="Reminder">(No more then 12 digits)</p></label>
       <input type="text" id="item-price" name="item-price" required maxlength="12">
       <label for="item-image">Item Image:<p id="Reminder">(Please enter the URL) <p id="Reminder"><a href="https://postimg.cc/">[You can use this site to upload images]</a></p>  </label>
@@ -111,5 +133,23 @@
       <hr>
       <input type="submit" value="Sell Item">
     </form>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2023 ShopAndSellNow. All rights reserved to PhantomX.</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/error">About Us</a></li>
+              <li><a href="/error">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html> 
