@@ -5,6 +5,7 @@
 <html>
   <head>
     <title>Sell Now! - International Digital Shop's Selling Page</title>
+    <!--CSS Section-->
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -94,18 +95,20 @@
 }
     </style>
   </head>
-
+<!--HTML Section-->
   <body>
+    <!--Flash Messages integrated from Flask-->
     {% with messages = get_flashed_messages() %}
-  {% if messages %}
+    {% if messages %}
     <div class="flashes">
       {% for message in messages %}
         <p>{{ message }}</p>
       {% endfor %}
     </div>
-  {% endif %}
-{% endwith %}
+    {% endif %}
+    {% endwith %}
     <header>
+      <!--Header section with logo-->
       <a href="/">
        <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
       </a>
@@ -114,14 +117,19 @@
     <h1 {text-align: center;}>
     <h1>Sell Your Stuff</h1>
     <form action="/sell" method="post">
+      <!--Label and Input for Item's Name-->
       <label for="item-name">Item Name: <p id="Reminder">(No more then 40 characters)</p></label>
       <input type="text" id="item-name" name="item-name" required maxlength="50">
+      <!--Label and Input for Item's Description-->
       <label for="item-description">Item Description:<p id="Reminder">(No more then 60 characters)</p></label>
       <textarea id="item-description" name="item-description" required maxlength="60"></textarea>
+      <!--Label and Input for Item's Price in IRR-->
       <label for="item-price">Item Price (IRR):<p id="Reminder">(No more then 12 digits)</p></label>
       <input type="text" id="item-price" name="item-price" required maxlength="12">
+      <!--Label and Input for Item's Image URL-->
       <label for="item-image">Item Image:<p id="Reminder">(Please enter the URL) <p id="Reminder"><a href="https://postimg.cc/">[You can use this site to upload images]</a></p>  </label>
       <input type="text" id="item-image" name="item-image">
+      <!--Label and Selectable Input for Item's Category-->
       <label for="item-category">Item Category:</label>
       <select id="item-category" name="item-category" required>
         <option value="">Select a category</option>
@@ -131,9 +139,11 @@
         <option value="miscellaneous">Miscellaneous</option>
       </select>
       <hr>
+      <!--Button to submit item into sellable products-->
       <input type="submit" value="Sell Item">
     </form>
 
+    <!--Footer Section-->
     <footer>
       <div class="container">
         <div class="row">
