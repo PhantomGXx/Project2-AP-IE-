@@ -5,10 +5,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Shop and Sell Now! - International Digital Shop</title>
+    <title>Shop and Sell Now! - International Digital Shop's Personal Cart Page</title>
+    <!--CSS Section-->
     <style>
-
-body {
+    body
+      {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
       }
@@ -158,34 +159,47 @@ body {
 }
     </style>
   </head>
-  <body>
 
+  <!--HTML Section-->
+  <body>
+    <!--Flash Messages integrated from Flask-->
     {% with messages = get_flashed_messages() %}
-  {% if messages %}
+    {% if messages %}
     <div class="flashes">
       {% for message in messages %}
         <p>{{ message }}</p>
       {% endfor %}
     </div>
-  {% endif %}
-{% endwith %}
+    {% endif %}
+    {% endwith %}
 
     <header>
-      <a href="/">
-       <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
-      </a>
-      <a href="/sell">
-        <button id="sell-btn">Sell Now!</button>
-      </a>
-    </header>
+      <!--Header section with logo, search bar, and navigation buttons--> 
+       <a href="/">
+        <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
+       </a>
+        <!--Search bar--> 
+        <form id="search">
+         <input id="search-bar" type="search" placeholder="Search for items...">
+         <button id="search-btn" type="submit"><a href="/error">Search</a></button>
+       </form>
+        <!--Shopping cart and sell button--> 
+       <a href="/sell">
+         <button id="sell-btn">Sell Now!</button>
+       </a>
+     </header>
     
+      <!--Total price and 'Pay Now!' button section--> 
     <div id="total-price-container">
       <p id="total-price">Total Price: {{ total_price_IRR }} IRR</p>
       <p id="total-price">Total Price: {{ total_price_USD }} USD</p>
       <button id="pay-now-btn"><a href="/error">Pay Now!</a></button>
     </div>
 
+
+    <!--Items in cart section--> 
     <nav>
+      <!--Loop designed to display all available items in list-->
       {% for item in cart_list %}
       <section class="items-section">
         <div class="item">
@@ -203,6 +217,7 @@ body {
       {% endfor %}
     </nav>
 
+     <!--Footer section--> 
     <footer>
       <div class="container">
         <div class="row">

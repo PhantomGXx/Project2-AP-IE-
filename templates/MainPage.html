@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Shop and Sell Now! - International Digital Shop's Main Pagex`</title>
-    <style>
+    <title>Shop and Sell Now! - International Digital Shop's Main Page</title>
+    <!--CSS Section-->
+    <style> 
       body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
@@ -215,7 +216,8 @@
 }
     </style>
   </head>
-
+<!--Java Script Section-->
+<!--This is for the BackToTop Button and it's animation.-->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var backToTopButton = document.getElementById("back-to-top");
@@ -234,12 +236,12 @@
     });
 
     function addToCart(itemId) {
-    // Handle adding item to cart here
     console.log("Item added to cart:", itemId);
   }
   </script>
 
   <body>
+    <!--Flash Messages integrated from Flask-->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
       <div class="flashes">
@@ -248,12 +250,14 @@
         {% endfor %}
       </div>
     {% endif %}
-  {% endwith %}
+    {% endwith %}
     
     <header>
+     <!--Header section with logo, search bar, and navigation buttons--> 
       <a href="/">
        <img src="https://i.postimg.cc/3x764Y4r/ShopLogo.png" alt="ShopNSellNow Logo" width="180" height="90">
       </a>
+       <!--Search bar--> 
        <form id="search">
         <input id="search-bar" type="search" placeholder="Search for items...">
         <button id="search-btn" type="submit"><a href="/error">Search</a></button>
@@ -261,11 +265,13 @@
       <a href="/cart">
       <img src="https://i.postimg.cc/MpXNG2F9/Shopping-Cart-Logo.png" id="ShoppingCart" width="50" height="50">
       </a>
+       <!--Shopping cart and sell button--> 
       <a href="/sell">
         <button id="sell-btn">Sell Now!</button>
       </a>
     </header>
 
+    <!--Navigation bar with category links--> 
     <nav id="search">
       <a href="#clothing" id="Categories">Clothing</a>
       <a href="#electronics" id="Categories">Electronics</a>
@@ -273,10 +279,13 @@
       <a href="#miscellaneous" id="Categories">Miscellaneous</a>
     </nav>
 
+    <!--Category sections--> 
+    <!--Clothing category section--> 
     <div class="category-container clothing-category" id="clothing">
       <a href="#">
         <img src="https://i.postimg.cc/fTxgYKPf/Clothing-Category.png" width="150" height="50" alt="Clothing" id="Titles">
       </a>
+      <!--Loop designed to display all available items in list-->
       {% for item in clothing_list %}
       <section class="items-section">
         <div class="item">
@@ -295,7 +304,7 @@
       {% endfor %}
     </div>
 
-
+    <!-- Other categories that follow the same structure as the clothing category --> 
       <div class="category-container electronics-category" id="electronics">
         <a href="#">
           <img src="https://i.postimg.cc/ZnXGDMLf/Electronics-Category.png" width="180" height="50" alt="Electronics" id="Titles">
@@ -363,8 +372,10 @@
       </div>
     </nav> 
 
+    <!--Back to top button--> 
     <button id="back-to-top">Back to Top</button>
 
+    <!--Footer with copyright and navigation links--> 
     <footer>
       <div class="container">
         <div class="row">
